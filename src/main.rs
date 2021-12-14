@@ -688,12 +688,12 @@ impl Board{
         
         if m_type == 6{ // T match
             self.board[row][col] = -1; self.board[row][col+2] = -1; self.board[row+1][col+1] = -1; self.board[row+2][col+1] = -1;
-            self.board[row][col+1] = self.pieces;
-            println!("Special T match! Row {}, Column {}: special number {} added", row, col, self.pieces);
+            self.board[row][col+1] = self.pieces-1;
+            println!("Special T match! Row {}, Column {}: special number {} added", row, col, self.pieces-1);
         }else{ // L match
             self.board[row][col] = -1; self.board[row+1][col] = -1; self.board[row+2][col+1] = -1; self.board[row+2][col+2] = -1;
             self.board[row+2][col] = self.pieces;
-            println!("Special L match! Row {}, Column {}: special number {} added", row, col, self.pieces);
+            println!("Special L match! Row {}, Column {}: special number {} added", row, col, self.pieces-1);
         }
 
         //fill in the empty spaces
@@ -708,7 +708,7 @@ impl Board{
     
     pub fn h_clear_5(&mut self, row:usize, col:usize){
         self.board[row][col] = -1; self.board[row][col+1] = -1; self.board[row][col+3] = -1; self.board[row][col+4] = -1;
-        self.board[row][col+2] = self.pieces;
+        self.board[row][col+2] = self.pieces-1;
         println!("Matched 5! Row {}, Column {}: special number {} added", row, col, self.pieces);
 
         //fill in the empty spaces
@@ -741,8 +741,8 @@ impl Board{
 
     pub fn v_clear_5(&mut self, row:usize, col:usize){
         self.board[row][col] = -1; self.board[row+1][col] = -1; self.board[row+3][col] = -1; self.board[row+4][col] = -1;
-        self.board[row+2][col] = self.pieces;
-        println!("Matched 5!  Row {}, Column {}: special number {} added", row, col, self.pieces);
+        self.board[row+2][col] = self.pieces-1;
+        println!("Matched 5!  Row {}, Column {}: special number {} added", row, col, self.pieces-1);
 
         //fill in the empty spaces
         let mut need_swap = self.swap_and_fill();
